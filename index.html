@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MM By Me</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lobster+Two:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        font-size: 40px;
+        font-family: "Lobster Two";
+      }
+      body {
+        background-image: url(photo.jpg);
+        background-repeat: no-repeat;
+      }
+      .btn {
+        border-radius: 30px;
+        width: 200px;
+      }
+
+      h1 {
+        font-size: 5vw;
+        color: rgb(231, 190, 115);
+        text-shadow: 2px 2px 5px red;
+      }
+
+      h2 {
+        font-size: 3vw;
+      }
+
+      input[type="submit"] {
+        border-radius: 10px;
+        width: 10vw;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        color: blueviolet;
+      }
+    </style>
+  </head>
+  <body>
+    <center>
+      <h1>Quote of the Day</h1>
+      <form onsubmit="show()">
+        <br />
+        <input type="submit" value="CLick" />
+        <br /><br />
+
+        <h2 id="msg" />
+        <h2 id="aut" />
+      </form>
+
+      <script>
+        function show() {
+          event.preventDefault();
+
+          let msg = document.getElementById("msg");
+          let aut = document.getElementById("aut");
+
+          let url = "https://dummyjson.com/quotes/random";
+          fetch(url)
+            .then((res) => res.json())
+            .then((data) => {
+              msg.innerHTML = data.quote;
+              aut.innerHTML = data.author;
+            })
+            .catch((err) => (msg.innerHTML = "issue" + err));
+          let r = parseInt(Math.random() * messages.length);
+          msg.innerHTML = messages[r];
+        }
+      </script>
+    </center>
+  </body>
+</html>
